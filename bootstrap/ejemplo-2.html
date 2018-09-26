@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="#">
+                    <div class="form-group mt-2">
+                      <label for="notas">Mis notas</label>
+                      <input id="entrada" type="text" class="form-control" placeholder="Introduzca una nota">
+                    </div>
+                    <button id="boton-agregar-nota" type="submit" class="btn btn-primary">Agregar Nota</button>
+                  </form>
+            </div>
+            <div class="col-sm-6 ">
+                <ul id="lista-notas" class="list-group mt-2">
+                    <li class="list-group-item list-group-item-dark">Primera Lista</li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    //Hacer referencia a la etiqueta Input
+    var entrada = document.querySelector("#entrada");
+    //Hacer referencia al boton Agregar Nota
+    var agregarNota = document.querySelector("#boton-agregar-nota");
+    //Hacer reeferencia al elemento donde se colocaran las notas
+    var lista = document.querySelector("#lista-notas");
+
+    //Agregar un manipulador del evento "click" del boton lista-notas
+    agregarNota.addEventListener("click", function(){
+        console.log("llego");
+        //Chequear primero si la etiqueta intpur tiene un valor introducido por el usuario
+        if (entrada.value != "") {
+            let nuevoElemento = document.createElement("li");
+            //Agregar como contenido el valor de la etiqueta input
+            nuevoElemento.textContent = entrada.value;
+            //Agregar las clases de bootstrap para darle estilo al nuevo elemento de la lista
+            nuevoElemento.classList.add("list-group-item", "list-group-item-dark");
+            //Agregar el nuevo elemento como elemento hijo de la etiqueta ul
+            lista.appendChild(nuevoElemento);
+            //Por ultimo limpia la etiqueta input
+            entrada.value = "";
+        }
+    });
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
