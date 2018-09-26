@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a id="enlace-home" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a id="enlace-servicios" class="nav-link" href="#">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a id="enlace-nosotros" class="nav-link" href="#">Sobre nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Deshabilitado</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+          <div class="row">
+            <!-- Columna 1  -->
+            <!-- Contenido dinámico con Jquery-->
+            <div id="output" class="col-sm-8"></div>
+
+            <!-- Columna 2-->
+            <div class="col-sm-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Novedades</h5>
+                        <small>3 days ago</small>
+                      </div>
+                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                      <small>Donec id elit non mi porta.</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Noticia 1</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                      <small class="text-muted">Donec id elit non mi porta.</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Noticia 2</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                      <small class="text-muted">Donec id elit non mi porta.</small>
+                    </a>
+                  </div>
+            </div>
+          </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+     
+    <!-- Ejemplo de uso de Jquery -->
+      <script>
+        var enlaceActivo = ""; 
+      $(document).ready( function() {
+        //Manejadores de eventos:
+        $("#enlace-home").click( function() {
+            enlaceActivo = "home";
+
+            console.log("enlaceActivo");
+            cargarContenedor(enlaceActivo)
+        }); 
+
+        $("#enlace-servicios").click( function() {
+            enlaceActivo = "servicios";
+
+            console.log("enlaceActivo");
+            cargarContenedor(enlaceActivo);
+        });    
+
+        $("#enlace-nosotros").click( function() {
+            enlaceActivo = "nosotros";
+
+            console.log("enlaceActivo");
+            cargarContenedor(enlaceActivo)
+        });           
+
+        $( "#output" ).load("./paginasSecundarias/home.html #home");
+      });
+
+      function cargarContenedor(enlaceActivo) {
+        //Dependiendo del enlace seleccionado muestra el contenedor corespondiente
+          switch (enlaceActivo) {
+            case "home":
+                console.log("cargar doc");
+                $( "#output" ).load("./paginasSecundarias/home.html #home", function() {
+                  console.log("pagina  home cargada")
+                } );
+                break;
+            case "servicios":
+                $( "#output" ).load("./paginasSecundarias/servicios.html #servicios",
+                console.log("pagina servicios cargada") );
+                break; 
+            case "nosotros":  
+                $( "#output" ).load("./paginasSecundarias/nosotros.html #nosotros" );
+                break; 
+            default: 
+                $( "#output" ).load("./paginasSecundarias/home.html #home");                
+         }
+        } 
+        
+    </script>
+  </body>
+</html>
